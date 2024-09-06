@@ -7,8 +7,6 @@ import "../../css/carousel/Carousel.css";
 
 const HotCollections = () => {
   const [nfts, setNfts] = useState([]);
-  let results = [];
-  let nft = {};
   const [img, setImg] = useState(true);
 
   useEffect(() => {
@@ -76,7 +74,7 @@ const HotCollections = () => {
                                 </Link>
                               </div>
                               <div className="nft_coll_pp">
-                                <Link to="/author">
+                                <Link to="/author/">
                                   <img
                                     className="lazy pp-coll"
                                     src={nfts.authorImage}
@@ -117,7 +115,6 @@ const HotCollections = () => {
                       onClick={(e) =>
                         e.stopPropagation() || instanceRef.current?.prev()
                       }
-                      disabled={currentSlide === 0}
                     />
 
                     <Arrow

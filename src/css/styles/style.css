@@ -13342,6 +13342,13 @@ a.read_more i {
   z-index: 10;
 }
 
+
+.skeleton { 
+  background-color: #bbbbbb !important;
+  fill: #bbbbbb !important;
+  
+}
+
 .author_list_pp img {
   width: 100%;
   border-radius: 100% !important;
