@@ -16701,11 +16701,45 @@ img {
   }
 }
 
+.skeleton-link {
+  * {
+    color: transparent !important;
+    
+  }
+}
+
+.skellyimg {
+  height: 50px;
+  width:50px;
+  border-radius: 50%;
+  
+}
+
+.skellyauthor {
+  height: 16px;
+  width: 8vw;
+  fill: gray
+}
+
+.skellyprice {
+  height: 16px;
+  width: 4vw;
+  fill: gray
+}
+
+.skelegroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .skeleton-box {
   display: inline-block;
   position: relative;
   overflow: hidden;
   background-color: #dddbdd;
+  color: transparent;
+  
 }
 
 .skeleton-box::after {

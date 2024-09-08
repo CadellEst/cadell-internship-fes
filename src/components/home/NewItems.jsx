@@ -45,6 +45,7 @@ const NewItems = () => {
     },
   });
 
+
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
@@ -67,7 +68,7 @@ const NewItems = () => {
                       <div className="nft__item">
                         <div className="author_list_pp">
                           <Link
-                            to="/author"
+                            to={`/author/${nft.authorId}`}
                             data-bs-toggle="tooltip"
                             data-bs-placement="top"
                             title="Creator: Monica Lucas"
@@ -108,7 +109,7 @@ const NewItems = () => {
                           </Link>
                         </div>
                         <div className="nft__item_info">
-                          <Link to="/item-details">
+                          <Link to={`/item-details/${nft.nftId}`}>
                             <h4>{nft.title}</h4>
                           </Link>
                           <div className="nft__item_price">{nft.price} ETH</div>
