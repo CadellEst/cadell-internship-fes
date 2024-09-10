@@ -10,6 +10,7 @@ const ExploreItems = () => {
   const [nft, setNft] = useState([]);
   const [img, setImg] = useState([]);
   const [cards, setCards] = useState(8)
+  const [arrayFin, setArrayFin] = useState(false)
   let nftData;
 
   async function fetchNfts(filter) {
@@ -31,6 +32,15 @@ const ExploreItems = () => {
   useEffect(() => {
     fetchNfts();
   }, []);
+  
+  function loadMore() {
+    setCards(cards + 4)
+    if (cards >= nft.length-4) {
+      setArrayFin(true)
+    } else {
+      setArrayFin(false)
+    }
+  }
 
 
 
@@ -99,9 +109,12 @@ const ExploreItems = () => {
             </div>
           ))}
       <div className="col-md-12 text-center">
-        <Link to="" id="loadmore" className="btn-main lead" onClick={() => setCards(cards+4)}>
+        {!arrayFin ?
+        <Link to="" id="loadmore" className="btn-main lead" onClick={loadMore}>
           Load more
-        </Link>
+        </Link> : null
+
+        }
       </div>
     </>
   );

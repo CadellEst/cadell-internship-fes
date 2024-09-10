@@ -17,7 +17,7 @@ const NewItems = () => {
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems"
       );
       setNft(data);
-      setImg();
+      setImg(true);
     }
     fetchNfts();
   }, []);
@@ -61,7 +61,7 @@ const NewItems = () => {
                 {img
                   ? nft.map((nft) => (
                       <div
-                        className="keen-slider__slide col-lg-3 col-md-6 col-sm-6 col-xs-12 overflow-hidden"
+                        className="keen-slider__slide col-lg-3 col-md-6 col-sm-6 col-xs-12"
                         key={nft.id}
                       >
                         <div className="nft__item">
