@@ -4,6 +4,7 @@ import axios from "axios";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import "../../css/carousel/Carousel.css";
+import ExpiryTimer from "../UI/ExpiryTimer";
 
 const NewItems = () => {
   const [nft, setNft] = useState([]);
@@ -16,11 +17,10 @@ const NewItems = () => {
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems"
       );
       setNft(data);
-      setImg(true);
+      setImg();
     }
     fetchNfts();
   }, []);
-
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
@@ -45,7 +45,6 @@ const NewItems = () => {
     },
   });
 
-
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
@@ -61,67 +60,70 @@ const NewItems = () => {
               <>
                 {img
                   ? nft.map((nft) => (
-                    <div
-                      className="keen-slider__slide col-lg-3 col-md-6 col-sm-6 col-xs-12"
-                      key={nft.id}
-                    >
-                      <div className="nft__item">
-                        <div className="author_list_pp">
-                          <Link
-                            to={`/author/${nft.authorId}`}
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="top"
-                            title="Creator: Monica Lucas"
-                          >
-                            <img className="lazy" src={nft.authorImage} alt="" />
-                            <i className="fa fa-check"></i>
-                          </Link>
-                        </div>
-                        
-                          <Expirytimer expiryTime={nft.expiryDate}/>
-                        
-              
-                        <div className="nft__item_wrap">
-                          <div className="nft__item_extra">
-                            <div className="nft__item_buttons">
-                              <button>Buy Now</button>
-                              <div className="nft__item_share">
-                                <h4>Share</h4>
-                                <a href="" target="_blank" rel="noreferrer">
-                                  <i className="fa fa-facebook fa-lg"></i>
-                                </a>
-                                <a href="" target="_blank" rel="noreferrer">
-                                  <i className="fa fa-twitter fa-lg"></i>
-                                </a>
-                                <a href="">
-                                  <i className="fa fa-envelope fa-lg"></i>
-                                </a>
+                      <div
+                        className="keen-slider__slide col-lg-3 col-md-6 col-sm-6 col-xs-12 overflow-hidden"
+                        key={nft.id}
+                      >
+                        <div className="nft__item">
+                          <div className="author_list_pp">
+                            <Link
+                              to={`/author/${nft.authorId}`}
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title="Creator: Monica Lucas"
+                            >
+                              <img
+                                className="lazy"
+                                src={nft.authorImage}
+                                alt=""
+                              />
+                              <i className="fa fa-check"></i>
+                            </Link>
+                          </div>
+
+                          <ExpiryTimer expiryTime={nft.expiryDate} />
+
+                          <div className="nft__item_wrap ">
+                            <div className="nft__item_extra">
+                              <div className="nft__item_buttons">
+                                <button>Buy Now</button>
+                                <div className="nft__item_share">
+                                  <h4>Share</h4>
+                                  <a href="" target="_blank" rel="noreferrer">
+                                    <i className="fa fa-facebook fa-lg"></i>
+                                  </a>
+                                  <a href="" target="_blank" rel="noreferrer">
+                                    <i className="fa fa-twitter fa-lg"></i>
+                                  </a>
+                                  <a href="">
+                                    <i className="fa fa-envelope fa-lg"></i>
+                                  </a>
+                                </div>
                               </div>
                             </div>
+                            <Link to={`/item-details/${nft.nftId}`}>
+                              <img
+                                src={nft.nftImage}
+                                className="lazy nft__item_preview"
+                                alt=""
+                              />
+                            </Link>
                           </div>
-              
-                          <Link to={`/item-details/${nft.nftId}`}>
-                            <img
-                              src={nft.nftImage}
-                              className="lazy nft__item_preview"
-                              alt=""
-                            />
-                          </Link>
-                        </div>
-                        <div className="nft__item_info">
-                          <Link to={`/item-details/${nft.nftId}`}>
-                            <h4>{nft.title}</h4>
-                          </Link>
-                          <div className="nft__item_price">{nft.price} ETH</div>
-                          <div className="nft__item_like">
-                            <i className="fa fa-heart"></i>
-                            <span>{nft.likes}</span>
+                          <div className="nft__item_info">
+                            <Link to={`/item-details/${nft.nftId}`}>
+                              <h4>{nft.title}</h4>
+                            </Link>
+                            <div className="nft__item_price">
+                              {nft.price} ETH
+                            </div>
+                            <div className="nft__item_like">
+                              <i className="fa fa-heart"></i>
+                              <span>{nft.likes}</span>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  )
-                )
+                    ))
                   : new Array(4).fill(0).map((_, index) => (
                       <div
                         className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
@@ -129,7 +131,7 @@ const NewItems = () => {
                       >
                         <div className="nft__item">
                           <div className="author_list_pp skeleton skeleton-box">
-                            <Link
+                            <div
                               to="/author"
                               data-bs-toggle="tooltip"
                               data-bs-placement="top"
@@ -140,47 +142,10 @@ const NewItems = () => {
                                 src={"AuthorImage"}
                                 alt=""
                               />
-                            </Link>
-                          </div>
-
-                          <div className="nft__item_wrap skeleton skeleton-box">
-                            <div className="nft__item_extra">
-                              <div className="nft__item_buttons">
-                                <button>Buy Now</button>
-                                <div className="nft__item_share">
-                                  <h4>Share</h4>
-                                  <a
-                                    href=""
-                                    target="_blank"
-                                    rel="noreferrer"
-                                  ></a>
-                                  <a
-                                    href=""
-                                    target="_blank"
-                                    rel="noreferrer"
-                                  ></a>
-                                  <a href=""></a>
-                                </div>
-                              </div>
-                            </div>
-
-                            <Link to="/item-details">
-                              <img
-                                src={"nftImage"}
-                                className="lazy nft__item_preview"
-                                alt=""
-                              />
-                            </Link>
-                          </div>
-                          <div className="nft__item_info ">
-                            <Link to="/item-details">
-                              <h4 className="skeleton"></h4>
-                            </Link>
-                            <div className="nft__item_price skeleton skeleton-box"></div>
-                            <div className="nft__item_like">
-                              <span className="skeleton skeleton-box"></span>
                             </div>
                           </div>
+
+                          <div className="nft__item_wrap skeleton skeleton-box"></div>
                         </div>
                       </div>
                     ))}
@@ -229,47 +194,5 @@ function Arrow(props) {
     </svg>
   );
 }
-
-
-const Expirytimer = ({ expiryTime }) => {
-
-const [remainingTime, setTime] = useState(sums(expiryTime))
-
-useEffect(() => {
-  const reset = setInterval(() => {
-    setTime(sums(expiryTime))
-  }, 1000);
-
-  
-  return () => clearInterval(reset)
-}, [expiryTime]) 
-
-if (remainingTime.total <= 0) {
-  return <></>
-}
-
-
-  return ( <div className="de_countdown">
-    {remainingTime.hours}h {remainingTime.minutes}m {remainingTime.seconds}s
-   
-  </div>)
-}
-
-
-
-  const sums = (expiryTime) => {
-    const total = expiryTime - Date.now()
-  let remainingTime = {
-  total: total,
-  hours: Math.floor(total / (1000*60*60) ),
-  minutes: Math.floor(total / (1000 * 60 * 60) % 60),
-  seconds: Math.floor((total / 1000) % 60)
-
- }
- return remainingTime
-
-  } 
-
-
 
 export default NewItems;

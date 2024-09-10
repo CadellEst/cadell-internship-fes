@@ -13226,6 +13226,10 @@ a.read_more i {
   padding-bottom: 10px;
 }
 
+.nft_item-skel {
+  display: flex;
+}
+
 .nft_coll:hover img {
   transform: scale(1.05);
 }
@@ -13343,10 +13347,17 @@ a.read_more i {
 }
 
 
-.skeleton { 
-  background-color: #bbbbbb !important;
-  fill: #bbbbbb !important;
-  
+
+.skeleton-img{
+  width: 80%;
+  height: 60%;
+}
+
+.skeleton-dp{
+  border-radius: 50%;
+  height: 5vw;
+  width: 5vw;
+
 }
 
 .author_list_pp img {
@@ -13894,6 +13905,7 @@ a.read_more i {
   border-color: rgba(255, 255, 255, 0.3);
   color: #ffffff;
 }
+
 
 .nft__item_extra button:hover {
   border-color: rgba(255, 255, 255, 0);
