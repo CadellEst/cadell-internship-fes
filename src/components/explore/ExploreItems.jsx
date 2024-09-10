@@ -73,7 +73,7 @@ const ExploreItems = () => {
           price={nft.price}
           likes={nft.likes}
           expiryDate={nft.expiryDate}
-          id={nft.id}
+          id={nft.authorId}
           /> 
              </div>
 

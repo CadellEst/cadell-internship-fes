@@ -2,7 +2,7 @@ import React from 'react'
 import ExpiryTimer from './ExpiryTimer'
 import { Link } from 'react-router-dom'
 
-function ExploreCard({authorImage, nftImage, title, price, likes, expiryDate, id}) {
+function ExploreCard({authorImage, nftImage, title, price, likes, expiryDate, id, nftId}) {
 
   return (
    
@@ -10,7 +10,7 @@ function ExploreCard({authorImage, nftImage, title, price, likes, expiryDate, id
           <div className="nft__item">
             <div className="author_list_pp">
               <Link
-                to="/author"
+                to={`/author/${id}`}
                 data-bs-toggle="tooltip"
                 data-bs-placement="top"
               >
@@ -39,7 +39,7 @@ function ExploreCard({authorImage, nftImage, title, price, likes, expiryDate, id
                   </div>
                 </div>
               </div>
-              <Link to="/item-details">
+              <Link to={`/item-details/${nftId}`}>
                 <img
                   src={nftImage}
                   className="lazy nft__item_preview"
@@ -48,7 +48,7 @@ function ExploreCard({authorImage, nftImage, title, price, likes, expiryDate, id
               </Link>
             </div>
             <div className="nft__item_info">
-              <Link to="/item-details">
+              <Link to={`/item-details/${nftId}`}>
                 <h4>{title}</h4>
               </Link>
               <div className="nft__item_price">{price} ETH</div>
