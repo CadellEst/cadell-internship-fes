@@ -13349,14 +13349,14 @@ a.read_more i {
 
 
 .skeleton-img{
-  width: 80%;
-  height: 60%;
+  width: 200px;
+  height: 200px;
 }
 
 .skeleton-dp{
   border-radius: 50%;
-  height: 5vw;
-  width: 5vw;
+  height: 50px;
+  width: 50px;
 
 }
 
