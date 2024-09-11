@@ -9,34 +9,38 @@ const AuthorItems = ({ nft, author, img }) => {
       <div className="tab-1">
         <div className="row">
           {!img
-            ? new Array(8).fill(0).map((_, index) => <div
-            key={index}
-            className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
-            style={{ display: "block", backgroundSize: "cover" }}
-          >
-            <div className="nft__item ">
-              <div className="flex space-between ">
-                <div>
-                  <div className=" skeleton-box  relative skeleton-dp" />
-                  <div></div>
-                  <div className="skeleton-box">5h 30m 32s</div>
-                </div>
-              </div>
+            ? new Array(8).fill(0).map((_, index) => (
+                <div
+                  key={index}
+                  className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                  style={{ display: "block", backgroundSize: "cover" }}
+                >
+                  <div className="nft__item ">
+                    <div className="flex space-between ">
+                      <div>
+                        <div className=" skeleton-box  relative skeleton-dp" />
+                        <div></div>
+                        <div className="skeleton-box">5h 30m 32s</div>
+                      </div>
+                    </div>
 
-              <div className="nft__item_wrap">
-                <div className="skeleton-img skeleton-box" alt="" />
-              </div>
-              <div className="nft__item_info">
-                <Link to="/item-details">
-                  <div className="skeleton-box">Pinky Ocean</div>
-                </Link>
-                <div className="nft__item_price skeleton-box">1.74 ETH</div>
-                <div className="nft__item_like">
-                  <span className="skeleton-box"></span>
+                    <div className="nft__item_wrap">
+                      <div className="skeleton-img skeleton-box" alt="" />
+                    </div>
+                    <div className="nft__item_info">
+                      <Link to="/item-details">
+                        <div className="skeleton-box">Pinky Ocean</div>
+                      </Link>
+                      <div className="nft__item_price skeleton-box">
+                        1.74 ETH
+                      </div>
+                      <div className="nft__item_like">
+                        <span className="skeleton-box"></span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>)
+              ))
             : nft?.map((nft, index) => (
                 <div
                   className="col-lg-3 col-md-6 col-sm-6 col-xs-12"

@@ -4,6 +4,9 @@ import axios from "axios";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import "../../css/carousel/Carousel.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 const HotCollections = () => {
   const [nfts, setNfts] = useState([]);
@@ -46,7 +49,14 @@ const HotCollections = () => {
 
   return (
     <>
-      <section id="section-collections" className="no-bottom">
+      <section
+        id="section-collections"
+        className="no-bottom"
+        data-aos="fade-in"
+        data-aos-delay="300"
+        data-aos-duration="500"
+        data-aos-easing="ease-in"
+      >
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -92,9 +102,11 @@ const HotCollections = () => {
                             </div>
                           </div>
                         ))
-                      : 
-                      new Array(4).fill(0).map((_, index) => (
-                          <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
+                      : new Array(4).fill(0).map((_, index) => (
+                          <div
+                            className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                            key={index}
+                          >
                             <div className="nft_coll">
                               <div className="nft_wrap__skeleton skeleton-box"></div>
                               <div className="nft_coll_pp__skeleton skeleton-box"></div>

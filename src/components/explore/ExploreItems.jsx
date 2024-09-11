@@ -5,12 +5,15 @@ import nftImage from "../../images/nftImage.jpg";
 import axios from "axios";
 import ExpiryTimer from "../UI/ExpiryTimer";
 import ExploreCard from "../UI/ExploreCard";
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 const ExploreItems = () => {
   const [nft, setNft] = useState([]);
   const [img, setImg] = useState([]);
-  const [cards, setCards] = useState(8)
-  const [arrayFin, setArrayFin] = useState(false)
+  const [cards, setCards] = useState(8);
+  const [arrayFin, setArrayFin] = useState(false);
   let nftData;
 
   async function fetchNfts(filter) {
@@ -27,23 +30,19 @@ const ExploreItems = () => {
     setNft(nftData.data);
     setImg(true);
   }
-  
 
   useEffect(() => {
     fetchNfts();
   }, []);
-  
+
   function loadMore() {
-    setCards(cards + 4)
-    if (cards >= nft.length-4) {
-      setArrayFin(true)
+    setCards(cards + 4);
+    if (cards >= nft.length - 4) {
+      setArrayFin(true);
     } else {
-      setArrayFin(false)
+      setArrayFin(false);
     }
   }
-
-
-
 
   return (
     <>
@@ -52,6 +51,8 @@ const ExploreItems = () => {
           id="filter-items"
           defaultValue=""
           onChange={(event) => fetchNfts(event.target.value)}
+          data-aos="fade-in"
+          data-aos-easing="ease-in"
         >
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
@@ -61,28 +62,31 @@ const ExploreItems = () => {
       </div>
       {img
         ? nft.slice(0, cards).map((nft) => (
-          <div
-          key={nft.id}
-          className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
-          style={{ display: "block", backgroundSize: "cover" }}
-        >
-          <ExploreCard 
-          authorImage={nft.authorImage}
-          nftImage={nft.nftImage}
-          title = {nft.title}
-          price={nft.price}
-          likes={nft.likes}
-          expiryDate={nft.expiryDate}
-          id={nft.authorId}
-          nftId={nft.nftId}
-          /> 
-             </div>
-
-        ))
+            <div
+              key={nft.id}
+              className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
+              data-aos="fade-in"
+              data-aos-easing="ease-in"
+              style={{ display: "block", backgroundSize: "cover" }}
+            >
+              <ExploreCard
+                authorImage={nft.authorImage}
+                nftImage={nft.nftImage}
+                title={nft.title}
+                price={nft.price}
+                likes={nft.likes}
+                expiryDate={nft.expiryDate}
+                id={nft.authorId}
+                nftId={nft.nftId}
+              />
+            </div>
+          ))
         : new Array(8).fill(0).map((_, index) => (
             <div
               key={index}
               className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
+              data-aos="fade-in"
+              data-aos-easing="ease-in"
               style={{ display: "block", backgroundSize: "cover" }}
             >
               <div className="nft__item ">
@@ -109,13 +113,21 @@ const ExploreItems = () => {
               </div>
             </div>
           ))}
-      <div className="col-md-12 text-center">
-        {!arrayFin ?
-        <Link to="" id="loadmore" className="btn-main lead" onClick={loadMore}>
-          Load more
-        </Link> : null
-
-        }
+      <div
+        className="col-md-12 text-center"
+        data-aos="fade-in"
+        data-aos-easing="ease-in"
+      >
+        {!arrayFin ? (
+          <Link
+            to=""
+            id="loadmore"
+            className="btn-main lead"
+            onClick={loadMore}
+          >
+            Load more
+          </Link>
+        ) : null}
       </div>
     </>
   );

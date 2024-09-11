@@ -16,7 +16,7 @@ const ItemDetails = () => {
     setImg(false);
     const { data } = await axios.get(URL);
     setNft(data);
-    setImg(true)
+    setImg(true);
   }
 
   useEffect(() => {
@@ -111,74 +111,81 @@ const ItemDetails = () => {
               </div>
             ) : (
               <div id="wrapper">
-              <div className="no-bottom no-top" id="content">
-                <div id="top"></div>
-                <section aria-label="section" className="mt90 sm-mt-0">
-                  <div className="container">
-                    <div className="row">
-                      <div className="col-md-6 text-center">
-                        <div
-                          src={nftImage}
-                          className="img-fluid img-rounded mb-sm-30 nft-image skeleton-box md:sm-5"
-                          alt=""
-                        />
-                      </div>
-                      <div className="col-md-6">
-                        <div className="item_info pt-4">
-                          <h2 className="skeleton-box">Rainbow Style #194</h2>
-        
-                          <div className="item_info_counts">
-                            <div className="item_info_views skeleton-box">
-                              100
-                            </div>
-                            <div className="item_info_like skeleton-box">
-                              74
-                            </div>
-                          </div>
-                          <p className="skeleton-box">
-                            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
-                            illo inventore veritatis et quasi architecto beatae vitae
-                            dicta sunt explicabo.
-                          </p>
-                          <div className="d-flex flex-row">
-                            <div className="mr40">
-                              <div className="item_author">
-                                <div className="author_list_pp">
-                                    <div className="lazy skeleton-dp  skeleton-box"  alt="" />
+                <div className="no-bottom no-top" id="content">
+                  <div id="top"></div>
+                  <section aria-label="section" className="mt90 sm-mt-0">
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-md-6 text-center">
+                          <div
+                            src={nftImage}
+                            className="img-fluid img-rounded mb-sm-30 nft-image skeleton-box md:sm-5"
+                            alt=""
+                          />
+                        </div>
+                        <div className="col-md-6">
+                          <div className="item_info pt-4">
+                            <h2 className="skeleton-box">Rainbow Style #194</h2>
 
-                                </div>
-                                <div className="author_list_info ">
-                                  <div to="/author" className="skeleton-box">Monica Lucas</div>
-                                </div>
+                            <div className="item_info_counts">
+                              <div className="item_info_views skeleton-box">
+                                100
+                              </div>
+                              <div className="item_info_like skeleton-box">
+                                74
                               </div>
                             </div>
-                            <div></div>
-                          </div>
-                          <div className="de_tab tab_simple">
-                            <div className="de_tab_content">
-                              <div className="item_author">
-                                <div className="author_list_pp">
-                       
-                                  <div className="lazy skeleton-dp  skeleton-box"  alt="" />
-
-                                </div>
-                                <div className="author_list_info">
-                                  <div to="/author" className="skeleton-box">Monica Lucas</div>
+                            <p className="skeleton-box">
+                              doloremque laudantium, totam rem aperiam, eaque
+                              ipsa quae ab illo inventore veritatis et quasi
+                              architecto beatae vitae dicta sunt explicabo.
+                            </p>
+                            <div className="d-flex flex-row">
+                              <div className="mr40">
+                                <div className="item_author">
+                                  <div className="author_list_pp">
+                                    <div
+                                      className="lazy skeleton-dp  skeleton-box"
+                                      alt=""
+                                    />
+                                  </div>
+                                  <div className="author_list_info ">
+                                    <div to="/author" className="skeleton-box">
+                                      Monica Lucas
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
+                              <div></div>
                             </div>
-                            <div className="spacer-40"></div>
-                            <div className="nft-item-price skeleton-box">
-                              <div className="">1.85</div>
+                            <div className="de_tab tab_simple">
+                              <div className="de_tab_content">
+                                <div className="item_author">
+                                  <div className="author_list_pp">
+                                    <div
+                                      className="lazy skeleton-dp  skeleton-box"
+                                      alt=""
+                                    />
+                                  </div>
+                                  <div className="author_list_info">
+                                    <div to="/author" className="skeleton-box">
+                                      Monica Lucas
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="spacer-40"></div>
+                              <div className="nft-item-price skeleton-box">
+                                <div className="">1.85</div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </section>
+                  </section>
+                </div>
               </div>
-            </div>
             )}
           </div>
         </section>

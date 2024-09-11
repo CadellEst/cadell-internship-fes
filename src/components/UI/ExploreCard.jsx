@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 
 function ExploreCard({authorImage, nftImage, title, price, likes, expiryDate, id, nftId}) {
 
-  console.log(nftId)
-
   return (
    
 

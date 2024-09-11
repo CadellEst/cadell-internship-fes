@@ -11,32 +11,32 @@ const Author = () => {
   const [author, setAuthor] = useState([]);
   const [img, setImg] = useState();
   const [nft, setNft] = useState([]);
-  const [ follow, setFollow ] = useState(false)
-  const [noFollowers, setNoFollowers] = useState(author.followers)
-
+  const [follow, setFollow] = useState(false);
+  const [noFollowers, setNoFollowers] = useState(author.followers);
 
   async function fetchAuthors() {
     setImg(false);
     const { data } = await axios.get(URL);
     setAuthor(data);
-    setImg(true)
-    setNft(data.nftCollection)
+    setImg(true);
+    setNft(data.nftCollection);
   }
-  
+
   useEffect(() => {
     fetchAuthors();
   }, []);
-  
+
   function followers() {
     if (follow === false) {
-      setNoFollowers(author.followers + 1)
-      setFollow(true)
+      setNoFollowers(author.followers + 1);
+      setFollow(true);
     } else {
-      setNoFollowers(author.followers + 1 - 1)
-      setFollow(false)}
+      setNoFollowers(author.followers + 1 - 1);
+      setFollow(false);
+    }
   }
 
-  console.log(noFollowers)
+  console.log(noFollowers);
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
@@ -63,7 +63,9 @@ const Author = () => {
                       <div className="profile_name">
                         <h4>
                           {author.authorName}
-                          <span className="profile_username">@{author.tag}</span>
+                          <span className="profile_username">
+                            @{author.tag}
+                          </span>
                           <span id="wallet" className="profile_wallet">
                             {author.address}
                           </span>
@@ -76,14 +78,13 @@ const Author = () => {
                   </div>
                   <div className="profile_follow de-flex">
                     <div className="de-flex-col">
-                      <div className="profile_follower">{noFollowers || author.followers} followers</div>
-                      
-                     <Link to="#" className="btn-main" onClick={followers}>
-                     {!follow ?
-                        'Follow' : 'Following'
-                     }
-                      </Link> :
-                      
+                      <div className="profile_follower">
+                        {noFollowers || author.followers} followers
+                      </div>
+                      <Link to="#" className="btn-main" onClick={followers}>
+                        {!follow ? "Follow" : "Following"}
+                      </Link>{" "}
+                      :
                     </div>
                   </div>
                 </div>
@@ -91,7 +92,7 @@ const Author = () => {
 
               <div className="col-md-12">
                 <div className="de_tab tab_simple">
-                  <AuthorItems nft={nft} author={author} img={img}/>
+                  <AuthorItems nft={nft} author={author} img={img} />
                 </div>
               </div>
             </div>

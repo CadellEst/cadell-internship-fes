@@ -5,6 +5,9 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import "../../css/carousel/Carousel.css";
 import ExpiryTimer from "../UI/ExpiryTimer";
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 const NewItems = () => {
   const [nft, setNft] = useState([]);
@@ -46,7 +49,14 @@ const NewItems = () => {
   });
 
   return (
-    <section id="section-items" className="no-bottom">
+    <section
+      id="section-items"
+      className="no-bottom"
+      data-aos="fade-in"
+      data-aos-delay="300"
+      data-aos-duration="500"
+      data-aos-easing="ease-in"
+    >
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
