@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import EthImage from "../images/ethereum.svg";
 import { Link, useParams } from "react-router-dom";
-import AuthorImage from "../images/author_thumbnail.jpg";
 import nftImage from "../images/nftImage.jpg";
 import axios from "axios";
-import Skeleton from "../components/UI/Skeleton";
 
 const ItemDetails = () => {
   const { id } = useParams();
@@ -23,7 +21,6 @@ const ItemDetails = () => {
     fetchNfts();
   }, []);
 
-  console.log(nft);
 
   useEffect(() => {
     window.scrollTo(0, 0);

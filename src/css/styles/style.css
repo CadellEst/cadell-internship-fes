@@ -13182,7 +13182,6 @@ a.read_more i {
   margin-bottom: 10px;
 }
 
-
 .nft_coll.style-2 {
   border: none;
   background: none !important;
@@ -13296,7 +13295,6 @@ a.read_more i {
   background-color: #bbbbbb;
   border: transparent;
   border-radius: 50%;
-  
 }
 
 .nft_coll_pp img {
@@ -13346,18 +13344,15 @@ a.read_more i {
   z-index: 10;
 }
 
-
-
-.skeleton-img{
+.skeleton-img {
   width: 200px;
   height: 200px;
 }
 
-.skeleton-dp{
+.skeleton-dp {
   border-radius: 50%;
   height: 50px;
   width: 50px;
-
 }
 
 .author_list_pp img {
@@ -13905,7 +13900,6 @@ a.read_more i {
   border-color: rgba(255, 255, 255, 0.3);
   color: #ffffff;
 }
-
 
 .nft__item_extra button:hover {
   border-color: rgba(255, 255, 255, 0);
@@ -16716,27 +16710,25 @@ img {
 .skeleton-link {
   * {
     color: transparent !important;
-    
   }
 }
 
 .skellyimg {
   height: 50px;
-  width:50px;
+  width: 50px;
   border-radius: 50%;
-  
 }
 
 .skellyauthor {
   height: 16px;
   width: 8vw;
-  fill: gray
+  fill: gray;
 }
 
 .skellyprice {
   height: 16px;
   width: 4vw;
-  fill: gray
+  fill: gray;
 }
 
 .skelegroup {
@@ -16751,7 +16743,6 @@ img {
   overflow: hidden;
   background-color: #dddbdd;
   color: transparent;
-  
 }
 
 .skeleton-box::after {
@@ -16810,5 +16801,3 @@ img {
 .no-cursor {
   cursor: not-allowed;
 }
-
-

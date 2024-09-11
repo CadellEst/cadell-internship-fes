@@ -1,6 +1,9 @@
 import React from 'react'
 import ExpiryTimer from './ExpiryTimer'
 import { Link } from 'react-router-dom'
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 function ExploreCard({authorImage, nftImage, title, price, likes, expiryDate, id, nftId}) {
 
