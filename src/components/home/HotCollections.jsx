@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
-import "../../css/carousel/Carousel.css";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import "react-owl-carousel";
+import ReactOwlCarousel from "react-owl-carousel";
 AOS.init();
 
 const HotCollections = () => {
@@ -24,28 +25,26 @@ const HotCollections = () => {
     fetchNFT();
   }, []);
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [loaded, setLoaded] = useState(false);
-  const [sliderRef, instanceRef] = useKeenSlider({
-    breakpoints: {
-      "(min-width: 400px)": {
-        slides: { perView: 2, spacing: 5 },
-      },
-      "(min-width: 1000px)": {
-        slides: { perView: 4, spacing: 10 },
-      },
-    },
-    slides: { perView: 1 },
+  const options = {
     loop: true,
-    mode: "free-snap",
-    initial: 0,
-    slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel);
+    margin: 10,
+    nav: true,
+    dots: false,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      },
+      900: {
+        items: 3,
+      },
+      1200: {
+        items: 4,
+      },
     },
-    created() {
-      setLoaded(true);
-    },
-  });
+  };
 
   return (
     <>
@@ -65,15 +64,12 @@ const HotCollections = () => {
                 <div className="small-border bg-color-2"></div>
               </div>
               <div className="navigation-wrapper">
-                <div ref={sliderRef} className="keen-slider">
-                  <>
-                    {img
+                <>
+                  <ReactOwlCarousel className="" {...options}>
+                    {!img
                       ? nfts.map((nfts) => (
-                          <div
-                            className="keen-slider__slide col-lg-3 col-md-6 col-sm-6 col-xs-12 "
-                            key={nfts.id}
-                          >
-                            <div className="nft_coll">
+                          <div className="">
+                            <div className="nft_coll" key={nfts.id}>
                               <div className="nft_wrap">
                                 <Link to={`/item-details/${nfts.nftId}`}>
                                   <img
@@ -118,24 +114,8 @@ const HotCollections = () => {
                             </div>
                           </div>
                         ))}
-                  </>
-                </div>
-                {loaded && instanceRef.current && (
-                  <>
-                    <Arrow
-                      left
-                      onClick={(e) =>
-                        e.stopPropagation() || instanceRef.current?.prev()
-                      }
-                    />
-
-                    <Arrow
-                      onClick={(e) =>
-                        e.stopPropagation() || instanceRef.current?.next()
-                      }
-                    />
-                  </>
-                )}
+                  </ReactOwlCarousel>
+                </>
               </div>
             </div>
           </div>
@@ -145,25 +125,6 @@ const HotCollections = () => {
   );
 };
 
-function Arrow(props) {
-  const disabled = props.disabled ? "arrow--disabled" : "";
-  return (
-    <svg
-      onClick={props.onClick}
-      className={`arrow ${
-        props.left ? "arrow--left" : "arrow--right"
-      } ${disabled}`}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-    >
-      {props.left && (
-        <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
-      )}
-      {!props.left && (
-        <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-      )}
-    </svg>
-  );
-}
+
 
 export default HotCollections;

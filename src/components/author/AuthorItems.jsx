@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const AuthorItems = ({ nft, author, img }) => {
+
+  useEffect(() => {
+    window.scroll(0, 0)
+  })
   return (
     <div className="de_tab_content">
       <div className="tab-1">

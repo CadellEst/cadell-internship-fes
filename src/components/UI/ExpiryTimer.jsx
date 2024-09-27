@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 function ExpiryTimer({ expiryTime }) {
   const [remainingTime, setTime] = useState(sums(expiryTime));
+  let expired = "Expired"
 
   useEffect(() => {
     const reset = setInterval(() => {
@@ -12,9 +13,8 @@ function ExpiryTimer({ expiryTime }) {
   }, [expiryTime]);
 
   if (remainingTime.total <= 0) {
-    return <></>;
+    return <div className="de_countdown">Expired</div>;
   }
-
   return (
     <div className="de_countdown">
       {remainingTime.hours}h {remainingTime.minutes}m {remainingTime.seconds}s
