@@ -68,7 +68,7 @@ const HotCollections = () => {
                 <div ref={sliderRef} className="keen-slider">
                   <>
                     {img
-                      ? nfts.map((nfts, id) => (
+                      ? nfts.map((nfts) => (
                           <div
                             className="keen-slider__slide col-lg-3 col-md-6 col-sm-6 col-xs-12 "
                             key={nfts.id}
